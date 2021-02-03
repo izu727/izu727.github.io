@@ -1,0 +1,956 @@
+<html>
+<head>
+<!-- Styles -->
+<style>
+#chartdiv {
+  width: 100%;
+  height: 600px;
+  background-color: #03091f;
+}
+body {background-color:#03091f;}
+            table{border: 0px rgb(236, 235, 235) solid; border-collapse: collapse; margin: 20px;}
+            table th, table td {border: solid 0.5px #3D414F;/*実線 1px 黒*/}
+            td{padding-left: 10px; padding-top: 10px; padding-bottom: 10px;}
+            #tabletop{background-color:#03091f; color: rgb(254, 254, 255); font-weight: bold; text-align: center; }
+            .n1{background-color:#d1d0cd; color:#37343d; font-weight: bold; text-align: center;}
+            .n2{background-color:#848491; color:#212135; font-weight : bold; text-align: center; }
+            .n3{background-color:#aa617d; color:#3f152d;font-weight: bold; text-align: center; }
+            .n4{background-color:#7a97c1; color:#192e54;font-weight: bold; text-align: center;}
+            .n5{background-color:#b2ae76; color:#353130;font-weight: bold; text-align: center;}
+            .n6{background-color:#599176; color:#1a303b;font-weight: bold; text-align: center;}
+            .n7{background-color:#bf866d; color:#3c222d;font-weight: bold; text-align: center;}
+            .n8{background-color:#a984af; color:#36183a;font-weight: bold; text-align: center;}
+            .custom{background-color:#03091f;color: rgb(254, 254, 255);}
+            .custom1{background-color:#37343d;color: rgb(254, 254, 255);}
+            .custom2{background-color:#212135;color: rgb(254, 254, 255);}
+            .custom3{background-color:#3f152d;color: rgb(254, 254, 255);}
+            .custom4{background-color:#192e54;color: rgb(254, 254, 255);}
+            .custom5{background-color:#353130;color: rgb(254, 254, 255);}
+            .custom6{background-color:#1a303b;color: rgb(254, 254, 255);}
+            .custom7{background-color:#3c222d;color: rgb(254, 254, 255);}
+            .custom8{background-color:#36183a;color: rgb(254, 254, 255);}
+
+           
+</style>
+
+
+</script>
+
+
+
+<head>
+  <title>Finishing Order</title>
+  <!-- amCharts javascript sources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+  <!-- amCharts javascript code -->
+　
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv2", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+"year": "1",
+"Curren Bouquetdor": 2,
+"Almond Eye": 1,
+"World Premire": 3,
+"Kiseki": 5,
+"Daring Tact": 1,
+"Contrail": 1,
+"Mikki Swallow": 5,
+"Way To Paris": 9,
+"Taurus Gemini": 8,
+"Perform a Promise": 6,
+"Crescendo Love": 4,
+"Makahiki": 11,
+"You Can Smile": 4,
+"Yoshio": 6,
+"Glory Vase": 1,
+}, {
+"year": "2",
+"Curren Bouquetdor": 2,
+"Almond Eye": 2,
+"World Premire": 1,
+"Kiseki": 2,
+"Daring Tact": 1,
+"Contrail": 1,
+"Mikki Swallow": 3,
+"Way To Paris": 5,
+"Taurus Gemini": 6,
+"Perform a Promise": 1,
+"Crescendo Love": 1,
+"Makahiki": 4,
+"You Can Smile": 4,
+"Yoshio": 12,
+"Glory Vase": 17,
+}, {
+"year": "3",
+"Curren Bouquetdor": 2,
+"Almond Eye": 1,
+"World Premire": 2,
+"Kiseki": 2,
+"Daring Tact": 1,
+"Contrail": 1,
+"Mikki Swallow": 1,
+"Way To Paris": 1,
+"Taurus Gemini": 8,
+"Perform a Promise": 3,
+"Crescendo Love": 7,
+"Makahiki": 10,
+"You Can Smile": 1,
+"Yoshio": 12,
+"Glory Vase": 1,
+}, {
+"year": "4",
+"Curren Bouquetdor": 2,
+"Almond Eye": 9,
+"World Premire": 2,
+"Kiseki": 6,
+"Daring Tact": 1,
+"Contrail": 1,
+"Mikki Swallow": 4,
+"Way To Paris": 3,
+"Taurus Gemini": 4,
+"Perform a Promise": 4,
+"Crescendo Love": 1,
+"Makahiki": 11,
+"You Can Smile": 5,
+"Yoshio": 12,
+"Glory Vase": 6,
+}, {
+"year": "5",
+"Curren Bouquetdor": 3,
+"Almond Eye": 1,
+"World Premire": 1,
+"Kiseki": 7,
+"Daring Tact": 1,
+"Contrail": 1,
+"Mikki Swallow": 3,
+"Way To Paris": 1,
+"Taurus Gemini": 1,
+"Perform a Promise": 14,
+"Crescendo Love": 5,
+"Makahiki": 4,
+"You Can Smile": 4,
+"Yoshio": 7,
+"Glory Vase": 2,
+}];	
+
+// Create category axis
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "year";
+categoryAxis.title.text = "Past races";
+categoryAxis.title.stroke = am4core.color("#ffffff");
+categoryAxis.title.fill = am4core.color("#ffffff");
+categoryAxis.renderer.opposite = true;
+
+// Create value axis
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.inversed = true;
+valueAxis.title.text = "Finishing Order";
+valueAxis.title.stroke = am4core.color("#ffffff");
+valueAxis.title.fill = am4core.color("#ffffff");
+valueAxis.renderer.minLabelPosition = 0.01;
+
+// Create series
+var series1 = chart.series.push(new am4charts.LineSeries());
+series1.dataFields.valueY = "Curren Bouquetdor";
+series1.dataFields.categoryX = "year";
+series1.name = "Curren Bouquetdor";
+series1.bullets.push(new am4charts.CircleBullet());
+series1.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series1.legendSettings.valueText = "{valueY}";
+series1.visible  = false;
+series1.hidden = true;
+
+
+var series2 = chart.series.push(new am4charts.LineSeries());
+series2.dataFields.valueY = "Almond Eye";
+series2.dataFields.categoryX = "year";
+series2.name = 'Almond Eye';
+series2.bullets.push(new am4charts.CircleBullet());
+series2.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series2.legendSettings.valueText = "{valueY}";
+series2.hidden = true;
+
+var series3 = chart.series.push(new am4charts.LineSeries());
+series3.dataFields.valueY = "World Premire";
+series3.dataFields.categoryX = "year";
+series3.name = 'World Premire';
+series3.bullets.push(new am4charts.CircleBullet());
+series3.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series3.legendSettings.valueText = "{valueY}";
+series3.hidden = true;
+
+var series4 = chart.series.push(new am4charts.LineSeries());
+series4.dataFields.valueY = "Kiseki";
+series4.dataFields.categoryX = "year";
+series4.name = 'Kiseki';
+series4.bullets.push(new am4charts.CircleBullet());
+series4.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series4.legendSettings.valueText = "{valueY}";
+series4.hidden = true;
+
+var series5 = chart.series.push(new am4charts.LineSeries());
+series5.dataFields.valueY = "Daring Tact";
+series5.dataFields.categoryX = "year";
+series5.name = 'Daring Tact';
+series5.bullets.push(new am4charts.CircleBullet());
+series5.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series5.legendSettings.valueText = "{valueY}";
+series5.hidden = true;
+
+var series6 = chart.series.push(new am4charts.LineSeries());
+series6.dataFields.valueY = "Contrail";
+series6.dataFields.categoryX = "year";
+series6.name = 'Contrail';
+series6.bullets.push(new am4charts.CircleBullet());
+series6.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series6.legendSettings.valueText = "{valueY}";
+series6.hidden = true;
+
+var series7 = chart.series.push(new am4charts.LineSeries());
+series7.dataFields.valueY = "Mikki Swallow";
+series7.dataFields.categoryX = "year";
+series7.name = 'Mikki Swallow';
+series7.bullets.push(new am4charts.CircleBullet());
+series7.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series7.legendSettings.valueText = "{valueY}";
+series7.hidden = true;
+
+var series8 = chart.series.push(new am4charts.LineSeries());
+series8.dataFields.valueY = "Way To Paris";
+series8.dataFields.categoryX = "year";
+series8.name = 'Way To Paris';
+series8.bullets.push(new am4charts.CircleBullet());
+series8.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series8.legendSettings.valueText = "{valueY}";
+series8.hidden = true;
+
+var series9 = chart.series.push(new am4charts.LineSeries());
+series9.dataFields.valueY = "Taurus Gemini";
+series9.dataFields.categoryX = "year";
+series9.name = 'Taurus Gemini';
+series9.bullets.push(new am4charts.CircleBullet());
+series9.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series9.legendSettings.valueText = "{valueY}";
+series9.hidden = true;
+
+var series10 = chart.series.push(new am4charts.LineSeries());
+series10.dataFields.valueY = "Perform a Promise";
+series10.dataFields.categoryX = "year";
+series10.name = 'Perform a Promise';
+series10.bullets.push(new am4charts.CircleBullet());
+series10.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series10.legendSettings.valueText = "{valueY}";
+series10.hidden = true;
+
+var series11 = chart.series.push(new am4charts.LineSeries());
+series11.dataFields.valueY = "Crescendo Love";
+series11.dataFields.categoryX = "year";
+series11.name = 'Crescendo Love';
+series11.bullets.push(new am4charts.CircleBullet());
+series11.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series11.legendSettings.valueText = "{valueY}";
+series11.hidden = true;
+
+var series12 = chart.series.push(new am4charts.LineSeries());
+series12.dataFields.valueY = "Makahiki";
+series12.dataFields.categoryX = "year";
+series12.name = 'Makahiki';
+series12.bullets.push(new am4charts.CircleBullet());
+series12.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series12.legendSettings.valueText = "{valueY}";
+series12.hidden = true;
+
+var series13 = chart.series.push(new am4charts.LineSeries());
+series13.dataFields.valueY = "You Can Smile";
+series13.dataFields.categoryX = "year";
+series13.name = 'You Can Smile';
+series13.bullets.push(new am4charts.CircleBullet());
+series13.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series13.legendSettings.valueText = "{valueY}";
+series13.hidden = true;
+
+var series14 = chart.series.push(new am4charts.LineSeries());
+series14.dataFields.valueY = "Yoshio";
+series14.dataFields.categoryX = "year";
+series14.name = 'Yoshio';
+series14.bullets.push(new am4charts.CircleBullet());
+series14.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series14.legendSettings.valueText = "{valueY}";
+series14.hidden = true;
+
+var series15 = chart.series.push(new am4charts.LineSeries());
+series15.dataFields.valueY = "Glory Vase";
+series15.dataFields.categoryX = "year";
+series15.name = 'Glory Vase';
+series15.bullets.push(new am4charts.CircleBullet());
+series15.tooltipText = "Finishing Order by {name} in {categoryX}: {valueY}";
+series15.legendSettings.valueText = "{valueY}";
+series15.hidden = true;
+
+series1.stroke = am4core.color("#EEEEE7"); //グラフの線の色　
+series2.stroke = am4core.color("#929293"); //グラフの線の色　
+series3.stroke = am4core.color("#929293"); //グラフの線の色
+series4.stroke = am4core.color("#F1A7A8"); //グラフの線の色　
+series5.stroke = am4core.color("#F1A7A8"); //グラフの線の色　　
+series6.stroke = am4core.color("#C4E6F8"); //グラフの線の色
+series7.stroke = am4core.color("#C4E6F8"); //グラフの線の色　　
+series8.stroke = am4core.color("#F9F8CD"); //グラフの線の色　
+series9.stroke = am4core.color("#F9F8CD"); //グラフの線の色　
+series10.stroke = am4core.color("#B2DDE3"); //グラフの線の色　
+series11.stroke = am4core.color("#B2DDE3"); //グラフの線の色　
+series12.stroke = am4core.color("#F1E1CD"); //グラフの線の色　
+series13.stroke = am4core.color("#F1E1CD"); //グラフの線の色　
+series14.stroke = am4core.color("#EDC8DD"); //グラフの線の色　
+series15.stroke = am4core.color("#EDC8DD"); //グラフの線の色　
+
+series1.fill = am4core.color("#393142"); //チップの線の色　
+series2.fill = am4core.color("#040A1A"); //チップの線の色　
+series3.fill = am4core.color("#040A1A"); //チップの線の色　
+series4.fill = am4core.color("#3E142C"); //チップの線の色　
+series5.fill = am4core.color("#3E142C"); //チップの線の色　
+series6.fill = am4core.color("#112F42"); //チップの線の色　
+series7.fill = am4core.color("#112F42"); //チップの線の色　
+series8.fill = am4core.color("#353131"); //チップの線の色　
+series9.fill = am4core.color("#353131"); //チップの線の色　
+series10.fill = am4core.color("#192F3B"); //チップの線の色　
+series11.fill = am4core.color("#192F3B"); //チップの線の色　
+series12.fill = am4core.color("#3C212B"); //チップの線の色　
+series13.fill = am4core.color("#3C212B"); //チップの線の色　
+series14.fill = am4core.color("#35183A"); //チップの線の色　
+series15.fill = am4core.color("#35183A"); //チップの線の色　
+
+// Add chart cursor
+chart.cursor = new am4charts.XYCursor();
+chart.cursor.behavior = "zoomY";
+
+
+let hs1 = series1.segments.template.states.create("hover")
+hs1.properties.strokeWidth = 5;
+series1.segments.template.strokeWidth = 1;
+
+let hs2 = series2.segments.template.states.create("hover")
+hs2.properties.strokeWidth = 5;
+series2.segments.template.strokeWidth = 1;
+
+let hs3 = series3.segments.template.states.create("hover")
+hs3.properties.strokeWidth = 5;
+series3.segments.template.strokeWidth = 1;
+
+let hs4 = series4.segments.template.states.create("hover")
+hs4.properties.strokeWidth = 5;
+series4.segments.template.strokeWidth = 1;
+
+let hs5 = series5.segments.template.states.create("hover")
+hs5.properties.strokeWidth = 5;
+series5.segments.template.strokeWidth = 1;
+
+let hs6 = series6.segments.template.states.create("hover")
+hs6.properties.strokeWidth = 5;
+series6.segments.template.strokeWidth = 1;
+
+let hs7 = series7.segments.template.states.create("hover")
+hs7.properties.strokeWidth = 5;
+series7.segments.template.strokeWidth = 1;
+
+let hs8 = series8.segments.template.states.create("hover")
+hs8.properties.strokeWidth = 5;
+series8.segments.template.strokeWidth = 1;
+
+let hs9 = series9.segments.template.states.create("hover")
+hs9.properties.strokeWidth = 5;
+series9.segments.template.strokeWidth = 1;
+
+let hs10 = series10.segments.template.states.create("hover")
+hs10.properties.strokeWidth = 5;
+series10.segments.template.strokeWidth = 1;
+
+let hs11 = series11.segments.template.states.create("hover")
+hs11.properties.strokeWidth = 5;
+series11.segments.template.strokeWidth = 1;
+
+let hs12 = series12.segments.template.states.create("hover")
+hs12.properties.strokeWidth = 5;
+series12.segments.template.strokeWidth = 1;
+
+let hs13 = series13.segments.template.states.create("hover")
+hs13.properties.strokeWidth = 5;
+series13.segments.template.strokeWidth = 1;
+
+let hs14 = series14.segments.template.states.create("hover")
+hs14.properties.strokeWidth = 5;
+series14.segments.template.strokeWidth = 1;
+
+let hs15 = series15.segments.template.states.create("hover")
+hs15.properties.strokeWidth = 5;
+series15.segments.template.strokeWidth = 1;
+
+// Add legend
+chart.legend = new am4charts.Legend();
+chart.legend.itemContainers.template.events.on("over", function(event){
+var segments = event.target.dataItem.dataContext.segments;
+segments.each(function(segment){
+segment.isHover = true;
+})
+})
+
+chart.legend.itemContainers.template.events.on("out", function(event){
+var segments = event.target.dataItem.dataContext.segments;
+segments.each(function(segment){
+segment.isHover = false;
+})
+})
+chart.legend.labels.template.text = "[bold {color}]{name}[/]"; //凡例
+}); // end am4core.ready()
+	
+	</script>
+		
+		<style>
+			#chartdiv {
+              width: 1300px;
+              height: 500px;
+              padding:20px;
+              font-size:12px;   /* グラフ内の文字の大きさ(タイトルを除く）指定可  */
+              font-weight:bold; /* グラフ内の文字の太さ  */
+              }
+    </style>
+        
+
+
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// create chart
+var chart = am4core.create("chartdiv1", am4charts.TreeMap);
+chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart.data = [{
+  name: "First",
+  color: "#050A21",
+  children: [
+{
+name: "Curren Bouquetdor",
+value: 2000/24.95,
+color: "#393142",
+linecolor: "#d1d0cd",
+odds: 24.9
+},
+{
+name: "Almond Eye",
+value: 2000/2.21,
+color: "#212135",
+linecolor: "#929293",
+odds: 2.2
+},
+{
+name: "World Premire",
+value: 2000/45.47,
+color: "#212135",
+linecolor: "#929293",
+odds: 45.4
+},
+{
+name: "Kiseki",
+value: 2000/44.66,
+color: "#3f152d",
+wordcolor: "#F1A7A8",
+odds: 44.6
+},
+{
+name: "Daring Tact",
+value: 2000/3.73,
+color: "#3f152d",
+linecolor: "#F1A7A8",
+odds: 3.7
+},
+{
+name: "Contrail",
+value: 2000/2.82,
+color: "#192e54",
+linecolor: "#C4E6F8",
+odds: 2.8
+},
+{
+name: "Mikki Swallow",
+value: 2000/216.21,
+color: "#192e54",
+linecolor: "#C4E6F8",
+odds: 216.2
+},
+{
+name: "Way To Paris",
+value: 2000/136.99,
+color: "#353130",
+linecolor: "#F9F8CD",
+odds: 136.9
+},
+{
+name: "Taurus Gemini",
+value: 2000/460.315,
+color: "#353130",
+linecolor: "#F9F8CD",
+odds: 460.3
+},
+{
+name: "Perform a Promise",
+value: 2000/312.512,
+color: "#1a303b",
+linecolor: "#B2DDE3",
+odds: 312.5
+},
+{
+name: "Crescendo Love",
+value: 2000/432.914,
+color: "#1a303b",
+linecolor: "#B2DDE3",
+odds: 432.9
+},
+{
+name: "Makahiki",
+value: 2000/226.111,
+color: "#3c222d",
+linecolor: "#F6E1CD",
+odds: 226.1
+},
+{
+name: "You Can Smile",
+value: 2000/101.18,
+color: "#3c222d",
+linecolor: "#F6E1CD",
+odds: 101.1
+},
+{
+name: "Yoshio",
+value: 2000/321.613,
+color: "#36183a",
+linecolor: "#EDC8DD",
+odds: 321.6
+},
+{
+name: "Glory Vase",
+value: 2000/17.24,
+color: "#36183a",
+linecolor: "#EDC8DD",
+odds: 17.2
+}
+]
+}];
+
+//chart.colors.step = 4;
+
+// define data fields
+chart.dataFields.value = "value";
+chart.dataFields.odds= "odds";
+chart.dataFields.name = "name";
+chart.dataFields.children = "children";
+chart.dataFields.color= "color";
+
+
+chart.zoomable = false;
+//var bgColor = new am4core.InterfaceColorSet().getFor("background");
+
+// level 0 series template
+var level0SeriesTemplate = chart.seriesTemplates.create("0");
+var level0ColumnTemplate = level0SeriesTemplate.columns.template;
+
+level0ColumnTemplate.column.cornerRadius(10, 10, 10, 10);
+level0ColumnTemplate.fillOpacity = 0;
+level0ColumnTemplate.strokeWidth = 1;
+level0ColumnTemplate.strokeOpacity = 0;
+level0ColumnTemplate.stroke = am4core.color("#c0c0c0");
+//level0ColumnTemplate.fill = am4core.color("#0000");
+
+// level 1 series template
+var level1SeriesTemplate = chart.seriesTemplates.create("1");
+var level1ColumnTemplate = level1SeriesTemplate.columns.template;
+
+level1SeriesTemplate.columns.template.tooltipText = "{name} odds: {odds}";
+level1SeriesTemplate.tooltip.animationDuration = 0;
+//level1SeriesTemplate.strokeOpacity = 1;
+
+level1ColumnTemplate.column.cornerRadius(10, 10, 10, 10)
+level1ColumnTemplate.fillOpacity = 1;
+level1ColumnTemplate.strokeWidth = 1;
+//level1ColumnTemplate.stroke = "#c0c0c0";
+
+var bullet1 = level1SeriesTemplate.bullets.push(new am4charts.LabelBullet());
+bullet1.locationY = 0.5;
+bullet1.locationX = 0.5;
+bullet1.label.text = "{name}";
+bullet1.label.fill = am4core.color("#c0c0c0");
+bullet1.label.fontSize = 8;
+
+chart.maxLevels = 2;
+
+
+
+
+document.getElementById("1-name").onclick = function() {
+  this.classList.toggle("custom1");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[0].color == "#d1d0cd"){
+              originaldata[0].children[0].color = "#37343d";
+            }else{
+              originaldata[0].children[0].color = "#d1d0cd";
+            }
+            chart.data = originaldata;
+        };
+
+document.getElementById("2-name").onclick = function() {
+  this.classList.toggle("custom2");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[1].color == "#848491"){
+              originaldata[0].children[1].color = "#212135";
+            }else{
+              originaldata[0].children[1].color = "#848491";
+            }
+            chart.data = originaldata;
+        };
+
+ document.getElementById("3-name").onclick = function() {
+  this.classList.toggle("custom2");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[2].color == "#848491"){
+              originaldata[0].children[2].color = "#212135";
+            }else{
+              originaldata[0].children[2].color = "#848491";
+            }
+            chart.data = originaldata;
+        };
+
+document.getElementById("4-name").onclick = function() {
+  this.classList.toggle("custom3");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[3].color == "#aa617d"){
+              originaldata[0].children[3].color = "#3f152d";
+            }else{
+              originaldata[0].children[3].color = "#aa617d";
+            }
+            chart.data = originaldata;
+        };
+
+document.getElementById("5-name").onclick = function() {
+  this.classList.toggle("custom3");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[4].color == "#aa617d"){
+              originaldata[0].children[4].color = "#3f152d";
+            }else{
+              originaldata[0].children[4].color = "#aa617d";
+            }
+            chart.data = originaldata;
+        };
+
+document.getElementById("6-name").onclick = function() {
+  this.classList.toggle("custom4");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[5].color == "#192e54"){
+              originaldata[0].children[5].color = "#7a97c1";
+            }else{
+              originaldata[0].children[5].color = "#192e54";
+            }
+            chart.data = originaldata;
+        };
+
+document.getElementById("7-name").onclick = function() {
+  this.classList.toggle("custom4");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[6].color == "#192e54"){
+              originaldata[0].children[6].color = "#7a97c1";
+            }else{
+              originaldata[0].children[6].color = "#192e54";
+            }
+            chart.data = originaldata;
+        };
+
+document.getElementById("8-name").onclick = function() {
+  this.classList.toggle("custom5");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[7].color == "#353130"){
+              originaldata[0].children[7].color = "#b2ae76";
+            }else{
+              originaldata[0].children[7].color = "#353130";
+            }
+            chart.data = originaldata;
+        };
+
+ document.getElementById("9-name").onclick = function() {
+  this.classList.toggle("custom5");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[8].color == "#353130"){
+              originaldata[0].children[8].color = "#b2ae76";
+            }else{
+              originaldata[0].children[8].color = "#353130";
+            }
+            chart.data = originaldata;
+        };
+
+
+
+document.getElementById("10-name").onclick = function() {
+  this.classList.toggle("custom6");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[9].color == "#1a303b"){
+              originaldata[0].children[9].color = "#599176";
+            }else{
+              originaldata[0].children[9].color = "#1a303b";
+            }
+            chart.data = originaldata;
+        };
+
+        document.getElementById("11-name").onclick = function() {
+  this.classList.toggle("custom6");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[10].color == "#1a303b"){
+              originaldata[0].children[10].color = "#599176";
+            }else{
+              originaldata[0].children[10].color = "#1a303b";
+            }
+            chart.data = originaldata;
+        };
+
+        document.getElementById("12-name").onclick = function() {
+  this.classList.toggle("custom7");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[11].color == "#3c222d"){
+              originaldata[0].children[11].color = "#bf866d";
+            }else{
+              originaldata[0].children[11].color = "#3c222d";
+            }
+            chart.data = originaldata;
+        };
+
+        document.getElementById("13-name").onclick = function() {
+  this.classList.toggle("custom7");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[12].color == "#3c222d"){
+              originaldata[0].children[12].color = "#bf866d";
+            }else{
+              originaldata[0].children[12].color = "#3c222d";
+            }
+            chart.data = originaldata;
+        };
+
+        document.getElementById("14-name").onclick = function() {
+  this.classList.toggle("custom8");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[13].color == "#36183a"){
+              originaldata[0].children[13].color = "#a984af";
+            }else{
+              originaldata[0].children[13].color = "#36183a";
+            }
+            chart.data = originaldata;
+        };
+
+        document.getElementById("15-name").onclick = function() {
+  this.classList.toggle("custom8");
+            //change array
+            var originaldata = chart.data;
+            //var uma = {name: "Kiseki", value: 2000/44.66, color: "#000", ozz: 44.6};
+            if(originaldata[0].children[14].color == "#36183a"){
+              originaldata[0].children[14].color = "#a984af";
+            }else{
+              originaldata[0].children[14].color = "#36183a";
+            }
+            chart.data = originaldata;
+        };
+}); // end am4core.ready()
+</script>
+</head>
+<body>
+  <img src="ok.png" alt="写真" width="550" height="400"> </p>
+  
+  <!-- HTML -->
+  <table width="500" height="80">
+    <tr id="tabletop">
+    <td>No,</td>
+    <td>Name</td>
+    <td>Sex/Age</td>
+    <td>Weight</td>
+    <td>Jockey</td>
+    
+    </tr>
+    <tr id="1">
+    <td id="1-number" class="n1">1</td>
+    <td id="1-name" class="custom">Curren Bouquetdor</td>
+    <td id="1-Sex/Age" class="custom">F/4</td>
+    <td id="1-Weight" class="custom">55.0</td>
+    <td id="1-jockey" class="custom">A.Tsumura</td>
+    </tr>
+    <tr>
+    <td id="2-number" class="n2">2</td>
+    <td id="2-name" class="custom">Almond Eye</td>
+    <td id="2-Sex/Age" class="custom">F/5</td>
+    <td id="2-Weight" class="custom">55.0</td>
+    <td id="2-jockey" class="custom">C.Lemaie</td>
+    </tr>
+    <tr>
+    <td id="3-number" class="n2">3</td>
+    <td id="3-name" class="custom">World Premire</td>
+    <td id="3-Sex/Age" class="custom">M/4</td>
+    <td id="3-Weight" class="custom">57.0</td>
+    <td id="3-jockey" class="custom">Y.Take</td>
+    </tr>
+    <tr>
+    <td id="4-number" class="n3">4</td>
+    <td id="4-name" class="custom">Kiseki</td>
+    <td id="4-Sex/Age" class="custom">M/6</td>
+    <td id="4-Weight" class="custom">55.0</td>
+    <td id="4-jockey" class="custom">S.Hamanak</td>
+    </tr>
+    <tr>
+    <td id="5-number" class="n3">5</td>
+    <td id="5-name"class="custom">Daring Tact</td>
+    <td id="5-Sex/Age"class="custom">F/3</td>
+    <td id="5-Weight"class="custom">53.0</td>
+    <td id="5-jockey"class="custom">K.Matsuyama</td>
+    </tr>
+    <tr>
+    <td id="6-number" class="n4">6</td>
+    <td id="6-name"class="custom">Contrail</td>
+    <td id="6-Sex/Age"class="custom">M/3</td>
+    <td id="6-Weight"class="custom">55.0</td>
+    <td id="6-jockey"class="custom">Y.Hukunaga</td>
+    </tr>
+    <tr>
+    <td id="7-number" class="n4">7</td>
+    <td id="7-name"class="custom">Mikki Swallow</td>
+    <td id="7-Sex/Age"class="custom">M/6</td>
+    <td id="7-Weight"class="custom">57.0</td>
+    <td id="7-jockey"class="custom">K.Tosaki</td>
+    </tr>
+    <tr>
+    <td id="8-number" class="n5">8</td>
+    <td id="8-name"class="custom">Way To Paris</td>
+    <td id="8-Sex/Age"class="custom">M/7</td>
+    <td id="8-Weight"class="custom">57.0</td>
+    <td id="8-jockey"class="custom">M.Demuro</td>
+    </tr>
+    <tr>
+    <td id="9-number" class="n5">9</td>
+    <td id="9-name"class="custom">Taurus Gemini</td>
+    <td id="9-Sex/Age"class="custom">M/4</td>
+    <td id="9-Weight"class="custom">57.0</td>
+    <td id="9-jockey"class="custom">H.Tanabe</td>
+    </tr>
+    <tr>
+    <td id="10-number" class="n6">10</td>
+    <td id="10-name"class="custom">Perform a Promise</td>
+    <td id="10-Sex/Age"class="custom">M/8</td>
+    <td id="10-Weight"class="custom">57.0</td>
+    <td id="10-jockey"class="custom">M.Iwata</td>
+    </tr>
+    <tr>
+    <td id="11-number" class="n6">11</td>
+    <td id="11-name"class="custom">Crescendo Love</td>
+    <td id="11-Sex/Age"class="custom">M/6</td>
+    <td id="11-Weight"class="custom">57.0</td>
+    <td id="11-jockey"class="custom">H.Uchida</td>
+    </tr>
+    <tr>
+    <td id="12-number" class="n7">12</td>
+    <td id="12-name"class="custom">Makahiki</td>
+    <td id="12-Sex/Age"class="custom">M/7</td>
+    <td id="12-Weight"class="custom">57.0</td>
+    <td id="12-jockey"class="custom">K.Miura</td>
+    </tr>
+    <tr>
+    <td id="13-number" class="n7">13</td>
+    <td id="13-name"class="custom">You Can Smile</td>
+    <td id="13-Sex/Age"class="custom">M/5</td>
+    <td id="13-Weight"class="custom">57.0</td>
+    <td id="13-jockey"class="custom">Y.Iwata</td>
+    </tr>
+    <tr>
+    <td id="14-number" class="n8">14</td>
+    <td id="14-name"class="custom">Yoshio</td>
+    <td id="14-Sex/Age"class="custom">M/7</td>
+    <td id="14-Weight"class="custom">57.0</td>
+    <td id="14-jockey"class="custom">M.Katsuura</td>
+    </tr>
+    <tr>
+    <td id="15-number" class="n8">15</td>
+    <td id="15-name"class="custom">Glory Vase</td>
+    <td id="15-Sex/Age"class="custom">M/5</td>
+    <td id="15-Weight"class="custom">57.0</td>
+    <td id="15-jockey"class="custom">Y.Kawada</td>
+    </tr>
+    </table>
+
+<div id="chartdiv1"></div>
+<style>
+  #chartdiv1{
+    width: 540; height: 410; position: absolute;top:740px; left:590px
+
+  }
+</style>
+
+<div id="chartdiv2"></div>
+<style>
+  #chartdiv2{
+    width: 900; height: 700; position: absolute;top:20px; left:550px
+
+  }
+</style>
+<div style ="position:absolute; top:730px; left:1130px;"><br><img src="end.png" alt="写真" width="250" height="380" > </div>
+
+</body>
+<body bgcolor="#050A21" text="#ffffff"></body>
+
+</html>
